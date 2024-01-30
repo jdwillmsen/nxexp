@@ -1,21 +1,22 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import express from 'express';
-import * as path from 'path';
+import { getGames } from './app/game';
+import { createReview, getReviews } from './app/review';
+import { addItemToCart, getCart, updateItemInCart } from './app/store';
 
 const app = express();
+app.use(express.json());
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.get('/api/game', getGames);
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to board-game-hoard-api!' });
-});
+app.get('/api/review/:game', getReviews);
+app.post('/api/review/:game', createReview);
 
-const port = process.env.PORT || 3333;
+app.get('/api/cart', getCart);
+app.post('/api/cart', addItemToCart);
+app.put('/api/cart', updateItemInCart);
+
+const port = process.env.port || 3333;
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+  console.log('Listening at http://localhost:' + port + '/api');
 });
 server.on('error', console.error);
