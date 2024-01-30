@@ -1,52 +1,57 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
+import { useEffect, useState } from 'react';
+import { Game } from '@nxexp/api-interfaces';
 
-import NxWelcome from './nx-welcome';
-
-import { Route, Routes, Link } from 'react-router-dom';
+export const currencyFormat = (amount: number) => '$' + amount.toFixed(2);
+export const ratingFormat = (rating: number | undefined) =>
+  (rating === undefined ? '?' : rating.toFixed(0)) + '/5';
 
 export function App() {
-  return (
-    <div>
-      <NxWelcome title="review" />
+  const [games, setGames] = useState<Game[]>([]);
 
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
+  useEffect(() => {
+    fetch('/api/game')
+      .then((r) => r.json())
+      .then(setGames);
+  }, []);
+
+  return (
+    <>
+      <div style={{ textAlign: 'center' }}>
+        <h1>Board Game Hoard: Reviews</h1>
       </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-    </div>
+      <div className={styles.gameContainer}>
+        {games.map((game) => {
+          return (
+            <a
+              className={styles.gameLink}
+              href={'/' + game.id}
+              key={game.id}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <div className={styles.tile}>
+                {game.image && (
+                  <div>
+                    <img
+                      src={game.image}
+                      alt={game.name}
+                      className={styles.gameImage}
+                    />
+                  </div>
+                )}
+                <div className={styles.gameName}>{game.name}</div>
+                <div className={styles.gameRating}>
+                  {ratingFormat(game.rating)}
+                </div>
+                <div className={styles.gamePrice}>
+                  {currencyFormat(game.price)}
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </>
   );
 }
 

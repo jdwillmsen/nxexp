@@ -1,1 +1,52 @@
-/* Your styles goes here. */
+.centerText {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.header {
+  font-size: 2em;
+  color: #333;
+}
+
+.gameContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gameLink {
+  text-decoration: none;
+  color: inherit;
+  margin: 10px;
+  text-align: center;
+  width: 250px;
+}
+
+.tile {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+  margin-bottom: 10px;
+}
+
+.gameImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.gameName {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.gameRating,
+.gamePrice {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
