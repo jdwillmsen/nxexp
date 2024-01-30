@@ -19,6 +19,9 @@
       "@nxexp/api-interface": [
         "libs/my-site/shared/api-interface/src/index.ts"
       ],
+      "@nxexp/api-interfaces": [
+        "libs/board-game-hoard/shared/api-interfaces/src/index.ts"
+      ],
       "@nxexp/header": ["libs/my-site/ui/header/src/index.ts"]
     }
   },

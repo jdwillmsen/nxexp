@@ -1,0 +1,29 @@
+{
+  "name": "api-interfaces",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/board-game-hoard/shared/api-interfaces/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/board-game-hoard/shared/api-interfaces",
+        "main": "libs/board-game-hoard/shared/api-interfaces/src/index.ts",
+        "tsConfig": "libs/board-game-hoard/shared/api-interfaces/tsconfig.lib.json",
+        "assets": ["libs/board-game-hoard/shared/api-interfaces/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/board-game-hoard/shared/api-interfaces/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
