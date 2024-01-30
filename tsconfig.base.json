@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@jdw/dashboard": ["libs/dashboard/src/index.ts"],
+      "@nxexp/api-interface": [
+        "libs/my-site/shared/api-interface/src/index.ts"
+      ],
       "@nxexp/header": ["libs/my-site/ui/header/src/index.ts"]
     }
   },
