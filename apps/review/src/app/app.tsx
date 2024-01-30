@@ -1,11 +1,7 @@
 import styles from './app.module.scss';
 import { useEffect, useState } from 'react';
 import { Game } from '@nxexp/api-interfaces';
-
-export const currencyFormat = (amount: number) => '$' + amount.toFixed(2);
-export const ratingFormat = (rating: number | undefined) =>
-  (rating === undefined ? '?' : rating.toFixed(0)) + '/5';
-
+import { Tile } from '@nxexp/tile';
 export function App() {
   const [games, setGames] = useState<Game[]>([]);
 
@@ -17,8 +13,8 @@ export function App() {
 
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Board Game Hoard: Reviews</h1>
+      <div className={styles.centerText}>
+        <h1 className={styles.header}>Board Game Hoard: Reviews</h1>
       </div>
       <div className={styles.gameContainer}>
         {games.map((game) => {
@@ -29,24 +25,7 @@ export function App() {
               key={game.id}
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              <div className={styles.tile}>
-                {game.image && (
-                  <div>
-                    <img
-                      src={game.image}
-                      alt={game.name}
-                      className={styles.gameImage}
-                    />
-                  </div>
-                )}
-                <div className={styles.gameName}>{game.name}</div>
-                <div className={styles.gameRating}>
-                  {ratingFormat(game.rating)}
-                </div>
-                <div className={styles.gamePrice}>
-                  {currencyFormat(game.price)}
-                </div>
-              </div>
+              <Tile game={game} />
             </a>
           );
         })}
