@@ -1,13 +1,10 @@
 import styles from './tile.module.scss';
 import { Game } from '@nxexp/api-interfaces';
+import { currencyFormat, ratingFormat } from '@nxexp/formatters';
 
 export interface TileProps {
   game: Game;
 }
-
-export const currencyFormat = (amount: number) => '$' + amount.toFixed(2);
-export const ratingFormat = (rating: number | undefined) =>
-  (rating === undefined ? '?' : rating.toFixed(0)) + '/5';
 
 export function Tile(props: TileProps) {
   const game = props.game;

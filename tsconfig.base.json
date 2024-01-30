@@ -22,7 +22,11 @@
       "@nxexp/api-interfaces": [
         "libs/board-game-hoard/shared/api-interfaces/src/index.ts"
       ],
+      "@nxexp/details": ["libs/review/feature/details/src/index.ts"],
+      "@nxexp/formatters": ["libs/review/util/formatters/src/index.ts"],
+      "@nxexp/games": ["libs/review/data-access/games/src/index.ts"],
       "@nxexp/header": ["libs/my-site/ui/header/src/index.ts"],
+      "@nxexp/list": ["libs/review/feature/list/src/index.ts"],
       "@nxexp/tile": ["libs/review/ui/tile/src/index.ts"]
     }
   },

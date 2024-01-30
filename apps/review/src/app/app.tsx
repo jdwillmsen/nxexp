@@ -1,35 +1,22 @@
 import styles from './app.module.scss';
-import { useEffect, useState } from 'react';
-import { Game } from '@nxexp/api-interfaces';
-import { Tile } from '@nxexp/tile';
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { List } from '@nxexp/list';
+import { Details } from '@nxexp/details';
+
+const Details2 = () => {
+  const { game } = useParams();
+
+  return <Details gameId={game || ''} />;
+};
+
 export function App() {
-  const [games, setGames] = useState<Game[]>([]);
-
-  useEffect(() => {
-    fetch('/api/game')
-      .then((r) => r.json())
-      .then(setGames);
-  }, []);
-
   return (
     <>
-      <div className={styles.centerText}>
-        <h1 className={styles.header}>Board Game Hoard: Reviews</h1>
-      </div>
-      <div className={styles.gameContainer}>
-        {games.map((game) => {
-          return (
-            <a
-              className={styles.gameLink}
-              href={'/' + game.id}
-              key={game.id}
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <Tile game={game} />
-            </a>
-          );
-        })}
-      </div>
+      <h1 className={styles.header}>Board Game Hoard: Reviews</h1>
+      <Routes>
+        <Route path={'/'} element={<List />} />
+        <Route path={'/:game'} element={<Details2 />} />
+      </Routes>
     </>
   );
 }
