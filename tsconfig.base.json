@@ -27,6 +27,11 @@
       "@nxexp/games": ["libs/review/data-access/games/src/index.ts"],
       "@nxexp/header": ["libs/my-site/ui/header/src/index.ts"],
       "@nxexp/list": ["libs/review/feature/list/src/index.ts"],
+      "@nxexp/medium-clone-data-access": [
+        "libs/medium-clone/data-access/src/index.ts"
+      ],
+      "@nxexp/medium-clone-ui": ["libs/medium-clone/ui/src/index.ts"],
+      "@nxexp/medium-clone-util": ["libs/medium-clone/util/src/index.ts"],
       "@nxexp/store-cart": ["libs/store/feature/store-cart/src/index.ts"],
       "@nxexp/store-details": ["libs/store/feature/store-details/src/index.ts"],
       "@nxexp/store-formatter": ["libs/store/ui/store-formatter/src/index.ts"],
