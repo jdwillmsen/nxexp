@@ -1,0 +1,29 @@
+{
+  "name": "medium-clone-e2e",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/angular/medium-clone/medium-clone-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/angular/medium-clone/medium-clone-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "medium-clone:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "medium-clone:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "medium-clone:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["medium-clone"]
+}
