@@ -1,0 +1,74 @@
+{
+  "name": "my-site",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/angular/my-site/my-site/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/angular/my-site/my-site"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-site:build",
+        "proxyConfig": "apps/angular/my-site/my-site/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-site:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "my-site:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-site:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-site:build:development"
+        },
+        "production": {
+          "buildTarget": "my-site:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../../../coverage/apps/angular/my-site/my-site"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "my-site:build"
+      }
+    }
+  },
+  "tags": []
+}
