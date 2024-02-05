@@ -1,1 +1,1 @@
-echo "Hi I am here :)"
+npx nx format:write
