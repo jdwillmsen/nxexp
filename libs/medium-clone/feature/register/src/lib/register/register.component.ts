@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import {
   FormBuilder,
-  FormControlName,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -35,6 +34,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('submit', this.form.value);
+    console.log('submit', this.form.value, this.form.valid);
   }
 }
