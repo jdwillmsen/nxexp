@@ -8,4 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './medium-clone-util.component.html',
   styleUrl: './medium-clone-util.component.scss',
 })
-export class MediumCloneUtilComponent {}
+export class MediumCloneUtilComponent {
+  // TODO: Clean this up
+  title = 'medium-clone-util-component';
+}
