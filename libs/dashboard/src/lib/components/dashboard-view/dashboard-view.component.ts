@@ -8,4 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './dashboard-view.component.html',
   styleUrl: './dashboard-view.component.scss',
 })
-export class DashboardViewComponent {}
+export class DashboardViewComponent {
+
+}
