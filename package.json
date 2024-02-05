@@ -22,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx nx format:write"
+      "pre-commit": "echo 'I ran the pre-commit' && npx nx format:write"
     }
   },
   "private": true,

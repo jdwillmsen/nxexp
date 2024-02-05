@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard-view.component.scss',
 })
 export class DashboardViewComponent {
-
+ 
 }
