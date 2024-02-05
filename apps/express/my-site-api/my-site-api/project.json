@@ -14,9 +14,7 @@
         "outputPath": "dist/apps/express/my-site-api/my-site-api",
         "main": "apps/express/my-site-api/my-site-api/src/main.ts",
         "tsConfig": "apps/express/my-site-api/my-site-api/tsconfig.app.json",
-        "assets": [
-          "apps/express/my-site-api/my-site-api/src/assets"
-        ],
+        "assets": ["apps/express/my-site-api/my-site-api/src/assets"],
         "webpackConfig": "apps/express/my-site-api/my-site-api/webpack.config.js"
       },
       "configurations": {
