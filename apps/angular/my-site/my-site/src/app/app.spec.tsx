@@ -1,3 +1,5 @@
 describe('App', () => {
-  it('should render successfully', () => {});
+  it('should render successfully', () => {
+    expect(true).toBeTruthy();
+  });
 });

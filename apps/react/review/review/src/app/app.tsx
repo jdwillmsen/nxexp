@@ -1,5 +1,5 @@
 import styles from './app.module.scss';
-import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import { List } from '@nxexp/list';
 import { Details } from '@nxexp/details';
 

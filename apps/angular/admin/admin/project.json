@@ -57,11 +57,11 @@
       "configurations": {
         "production": {
           "buildTarget": "admin:build:production",
-          "port": 4200
+          "port": 4400
         },
         "development": {
           "buildTarget": "admin:build:development",
-          "port": 4200
+          "port": 4400
         }
       },
       "defaultConfiguration": "development"

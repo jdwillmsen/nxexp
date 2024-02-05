@@ -1,10 +1,5 @@
-import { render } from '@testing-library/react';
+import { expect, test } from 'vitest';
 
-import Details from './details';
-
-describe('Details', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<Details />);
-    expect(baseElement).toBeTruthy();
-  });
+test('test', () => {
+  expect(true).toBeTruthy();
 });

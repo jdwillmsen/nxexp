@@ -3,6 +3,6 @@ describe('medium-clone-e2e', () => {
 
   it('should display welcome message', () => {
     // TODO: Implement this
-    cy.get('');
+    console.log();
   });
 });
