@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/store/ui/store-formatter/src",
   "prefix": "nxexp",
-  "tags": ["ui", "store"],
+  "tags": ["type:ui", "scope:store"],
   "projectType": "library",
   "targets": {
     "test": {

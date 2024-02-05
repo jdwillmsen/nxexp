@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/medium-clone/data-access/src",
   "prefix": "nxexp",
-  "tags": ["data-access", "medium-clone"],
+  "tags": ["type:data-access", "scope:medium-clone"],
   "projectType": "library",
   "targets": {
     "test": {

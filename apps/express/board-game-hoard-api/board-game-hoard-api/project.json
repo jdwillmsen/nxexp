@@ -1,7 +1,7 @@
 {
   "name": "board-game-hoard-api",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/angular/board-game-hoard-api/board-game-hoard-api/src",
+  "sourceRoot": "apps/express/board-game-hoard-api/board-game-hoard-api/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,13 +11,13 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/angular/board-game-hoard-api/board-game-hoard-api",
-        "main": "apps/angular/board-game-hoard-api/board-game-hoard-api/src/main.ts",
-        "tsConfig": "apps/angular/board-game-hoard-api/board-game-hoard-api/tsconfig.app.json",
+        "outputPath": "dist/apps/express/board-game-hoard-api/board-game-hoard-api",
+        "main": "apps/express/board-game-hoard-api/board-game-hoard-api/src/main.ts",
+        "tsConfig": "apps/express/board-game-hoard-api/board-game-hoard-api/tsconfig.app.json",
         "assets": [
-          "apps/angular/board-game-hoard-api/board-game-hoard-api/src/assets"
+          "apps/express/board-game-hoard-api/board-game-hoard-api/src/assets"
         ],
-        "webpackConfig": "apps/angular/board-game-hoard-api/board-game-hoard-api/webpack.config.js"
+        "webpackConfig": "apps/express/board-game-hoard-api/board-game-hoard-api/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -41,14 +41,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "apps/angular/board-game-hoard-api/board-game-hoard-api/jest.config.ts"
-      }
     }
   },
-  "tags": []
+  "tags": ["type:app", "scope:board-game-hoard-api", "framework:express"]
 }

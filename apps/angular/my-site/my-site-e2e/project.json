@@ -26,5 +26,5 @@
     }
   },
   "implicitDependencies": ["my-site"],
-  "tags": []
+  "tags": ["type:app", "scope:my-site"]
 }

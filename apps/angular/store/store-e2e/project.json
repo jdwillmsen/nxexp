@@ -24,6 +24,6 @@
       "executor": "@nx/eslint:lint"
     }
   },
-  "tags": [],
+  "tags": ["type:app", "scope:store"],
   "implicitDependencies": ["store"]
 }

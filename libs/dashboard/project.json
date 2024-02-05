@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/dashboard/src",
   "prefix": "nxexp",
-  "tags": ["ui"],
+  "tags": ["type:ui", "scope:dashboard"],
   "projectType": "library",
   "targets": {
     "build": {

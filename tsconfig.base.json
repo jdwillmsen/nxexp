@@ -30,6 +30,9 @@
       "@nxexp/medium-clone-data-access": [
         "libs/medium-clone/data-access/src/index.ts"
       ],
+      "@nxexp/medium-clone-feature-register": [
+        "libs/medium-clone/feature/register/src/index.ts"
+      ],
       "@nxexp/medium-clone-ui": ["libs/medium-clone/ui/src/index.ts"],
       "@nxexp/medium-clone-util": ["libs/medium-clone/util/src/index.ts"],
       "@nxexp/store-cart": ["libs/store/feature/store-cart/src/index.ts"],

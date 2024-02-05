@@ -8,5 +8,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory:
-    '../../../../coverage/apps/angular/board-game-hoard-api/board-game-hoard-api',
+    '../../../../coverage/apps/express/board-game-hoard-api/board-game-hoard-api',
 };

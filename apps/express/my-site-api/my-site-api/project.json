@@ -1,0 +1,47 @@
+{
+  "name": "my-site-api",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/express/my-site-api/my-site-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/express/my-site-api/my-site-api",
+        "main": "apps/express/my-site-api/my-site-api/src/main.ts",
+        "tsConfig": "apps/express/my-site-api/my-site-api/tsconfig.app.json",
+        "assets": [
+          "apps/express/my-site-api/my-site-api/src/assets"
+        ],
+        "webpackConfig": "apps/express/my-site-api/my-site-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-site-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-site-api:build:development"
+        },
+        "production": {
+          "buildTarget": "my-site-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": ["type:app", "scope:my-site-api", "framework:express"]
+}

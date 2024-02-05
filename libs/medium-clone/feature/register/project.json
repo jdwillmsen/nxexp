@@ -1,16 +1,16 @@
 {
-  "name": "store-list",
+  "name": "medium-clone-feature-register",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/store/feature/store-list/src",
+  "sourceRoot": "libs/medium-clone/feature/register/src",
   "prefix": "nxexp",
-  "tags": ["type:feature", "scope:store"],
+  "tags": ["type:feature", "scope:medium-clone"],
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/store/feature/store-list/jest.config.ts"
+        "jestConfig": "libs/medium-clone/feature/register/jest.config.ts"
       }
     },
     "lint": {

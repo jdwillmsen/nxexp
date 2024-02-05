@@ -25,6 +25,6 @@
       "outputs": ["{options.outputFile}"]
     }
   },
-  "tags": [],
+  "tags": ["type:app", "scope:admin"],
   "implicitDependencies": ["admin"]
 }

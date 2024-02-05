@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/medium-clone/ui/src",
   "prefix": "nxexp",
-  "tags": ["ui", "medium-clone"],
+  "tags": ["type:ui", "scope:medium-clone"],
   "projectType": "library",
   "targets": {
     "test": {

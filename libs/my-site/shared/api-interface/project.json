@@ -22,5 +22,5 @@
       "executor": "@nx/eslint:lint"
     }
   },
-  "tags": []
+  "tags": ["type:util", "scope:my-site"]
 }

@@ -25,5 +25,5 @@
     }
   },
   "implicitDependencies": ["review"],
-  "tags": []
+  "tags": ["type:app", "scope:review"]
 }

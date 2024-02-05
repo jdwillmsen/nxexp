@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/store/feature/store-details/src",
   "prefix": "nxexp",
-  "tags": ["feature", "store"],
+  "tags": ["type:feature", "scope:store"],
   "projectType": "library",
   "targets": {
     "test": {

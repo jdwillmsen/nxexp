@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "nxexp",
   "sourceRoot": "apps/angular/store/store/src",
-  "tags": [],
+  "tags": ["type:app", "scope:store"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

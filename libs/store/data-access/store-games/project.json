@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/store/data-access/store-games/src",
   "prefix": "nxexp",
-  "tags": [],
+  "tags": ["type:data-access", "scope:store"],
   "projectType": "library",
   "targets": {
     "test": {
