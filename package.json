@@ -2,7 +2,24 @@
   "name": "@nxexp/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "nx": "nx --verbose",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "lint": "nx run-many -t lint",
+    "affected:build": "nx affected:build",
+    "affected:e2e": "nx affected:e2e",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "affected:dep-graph": "nx graph --affected",
+    "affected": "nx affected",
+    "format": "nx format:write --base=main",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "nx migrate latest",
+    "dep-graph": "nx dep-graph",
+    "help": "nx help"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npx nx format:write"
