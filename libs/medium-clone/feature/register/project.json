@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/medium-clone/feature/register/src",
   "prefix": "nxexp",
-  "tags": ["type:feature", "scope:medium-clone"],
+  "tags": [],
   "projectType": "library",
   "targets": {
     "test": {
