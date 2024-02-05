@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+  "prepare": "husky",
     "nx": "nx --verbose",
     "build": "nx run-many -t build",
     "test": "nx run-many -t test",
@@ -18,13 +19,7 @@
     "format:check": "nx format:check",
     "update": "nx migrate latest",
     "dep-graph": "nx dep-graph",
-    "help": "nx help",
-    "prepare": "husky"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'I ran the pre-commit' && npx nx format:write"
-    }
+    "help": "nx help"
   },
   "private": true,
   "dependencies": {
