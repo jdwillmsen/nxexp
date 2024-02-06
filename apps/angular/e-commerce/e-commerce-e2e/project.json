@@ -1,0 +1,26 @@
+{
+  "name": "e-commerce-e2e",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/angular/e-commerce/e-commerce-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/angular/e-commerce/e-commerce-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "e-commerce:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "e-commerce:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "e-commerce:serve-static"
+        }
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["e-commerce"]
+}

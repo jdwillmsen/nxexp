@@ -1,0 +1,89 @@
+{
+  "name": "e-commerce",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "nxexp",
+  "sourceRoot": "apps/angular/e-commerce/e-commerce/src",
+  "tags": ["type:app", "framework:angular", "scope:e-commerce"],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/angular/e-commerce/e-commerce",
+        "index": "apps/angular/e-commerce/e-commerce/src/index.html",
+        "main": "apps/angular/e-commerce/e-commerce/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/angular/e-commerce/e-commerce/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/angular/e-commerce/e-commerce/src/favicon.ico",
+          "apps/angular/e-commerce/e-commerce/src/assets"
+        ],
+        "styles": ["apps/angular/e-commerce/e-commerce/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 5200
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "e-commerce:build:production"
+        },
+        "development": {
+          "buildTarget": "e-commerce:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "e-commerce:build"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/angular/e-commerce/e-commerce/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "e-commerce:build",
+        "port": 5200
+      }
+    }
+  }
+}
