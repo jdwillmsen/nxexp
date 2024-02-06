@@ -33,7 +33,6 @@
     "@angular/platform-server": "17.1.1",
     "@angular/router": "17.1.1",
     "@angular/ssr": "17.1.1",
-    "@ngrx/component-store": "~17.0.0",
     "@ngrx/effects": "~17.0.0",
     "@ngrx/entity": "~17.0.0",
     "@ngrx/router-store": "~17.0.0",
@@ -45,7 +44,8 @@
     "react-router-dom": "6.11.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "0.14.3"
+    "zone.js": "0.14.3",
+    "@ngrx/component-store": "^17.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "17.1.1",
@@ -59,6 +59,7 @@
     "@angular/language-service": "17.1.1",
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
+    "@ngrx/component-store": "^17.1.0",
     "@ngrx/schematics": "~17.0.0",
     "@nx/angular": "18.0.2",
     "@nx/cypress": "18.0.2",
