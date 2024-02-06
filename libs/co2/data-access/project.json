@@ -1,0 +1,17 @@
+{
+  "name": "co2-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/co2/data-access/src",
+  "prefix": "nxexp",
+  "tags": ["type:data-access", "scope:co2"],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/co2/data-access/jest.config.ts"
+      }
+    }
+  }
+}

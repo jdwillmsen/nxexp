@@ -58,6 +58,11 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/angular:ng-packagr-lite": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -109,5 +114,13 @@
       }
     }
   },
-  "nxCloudAccessToken": "ZGQ1YmVlNmYtYjNiNy00ZGRhLThiZjYtODk4MDY1MWQxNWZifHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "ZGQ1YmVlNmYtYjNiNy00ZGRhLThiZjYtODk4MDY1MWQxNWZifHJlYWQtd3JpdGU=",
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ]
 }

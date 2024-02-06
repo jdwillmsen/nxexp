@@ -22,6 +22,7 @@
       "@nxexp/api-interfaces": [
         "libs/board-game-hoard/shared/api-interfaces/src/index.ts"
       ],
+      "@nxexp/co2-data-access": ["libs/co2/data-access/src/index.ts"],
       "@nxexp/details": ["libs/review/feature/details/src/index.ts"],
       "@nxexp/formatters": ["libs/review/util/formatters/src/index.ts"],
       "@nxexp/games": ["libs/review/data-access/games/src/index.ts"],
