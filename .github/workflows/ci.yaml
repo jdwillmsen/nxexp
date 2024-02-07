@@ -1,9 +1,5 @@
 name: CI
 
-env:
-  NODE_OPTIONS: --max_old_space_size=6144
-  NX_RUN_GROUP: ${{ github.run_id }}
-
 on:
   push:
     branches:
@@ -13,6 +9,13 @@ on:
   workflow_dispatch:
     branches:
 
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true # this enables DTE
+  NX_CLOUD_DISTRIBUTED_EXECUTION_AGENT_COUNT: 4 # expected number of agents
+  NX_BRANCH: ${{ github.event.number || github.ref_name }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # this is needed if our pipeline publishes to npm
+
 # Needed for nx-set-shas when run on the main branch
 permissions:
   actions: read
@@ -20,21 +23,92 @@ permissions:
 
 jobs:
   main:
+    name: Nx Cloud - Main Job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        name: Checkout [Pull Request]
+        if: ${{ github.event_name == 'pull_request' }}
         with:
+          # By default, PRs will be checked-out based on the Merge Commit, but we want the actual branch HEAD.
+          ref: ${{ github.event.pull_request.head.sha }}
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
-      # Cache node_modules
-      - uses: actions/setup-node@v4
+
+      - uses: actions/checkout@v4
+        name: Checkout [Default Branch]
+        if: ${{ github.event_name != 'pull_request' }}
+        with:
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+
+      # Set node/npm/yarn versions using volta
+      - uses: volta-cli/action@v4
+        with:
+          package-json-path: '${{ github.workspace }}/package.json'
+
+      - name: Use the package manager cache if available
+        uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: 'npm'
-      - run: npx nx-cloud start-ci-run --distribute-on="5 linux-medium-js" --stop-agents-after="build" # this line enables distribution
-      - run: npm ci
-      - uses: nrwl/nx-set-shas@v3
-      # This line is needed for nx affected to work when CI is running on a PR
-      #      - run: git branch --track main origin/main
 
-      - run: npx nx-cloud record -- nx format:check
-      - run: npx nx affected -t lint test build --parallel=3
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check out the default branch
+        if: github.ref != 'refs/heads/main'
+        run: git branch --track main origin/main
+
+      - name: Initialize the Nx Cloud distributed CI run and stop agents when the build tasks are done
+        run: npx nx-cloud start-ci-run --stop-agents-after=build
+
+      - name: Run commands in parallel
+        run: |
+          pids=()
+          # list of commands to be run on main has env flag NX_CLOUD_DISTRIBUTED_EXECUTION set to false
+          NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx-cloud record -- npx nx format:check & pids+=($!)
+
+          # list of commands to be run on agents
+          npx nx affected -t lint,test --parallel=4 &
+          npx nx affected -t build --parallel=4 &
+          pids+=($!)
+
+          # run all commands in parallel and bail if one of them fails
+          for pid in ${pids[*]}; do
+            if ! wait $pid; then
+              exit 1
+            fi
+          done
+
+          exit 0
+
+  agents:
+    name: Agent ${{ matrix.agent }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Add more agents here as your repository expands
+        agent: [1, 2, 3, 4]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Set node/npm/yarn versions using volta
+      - uses: volta-cli/action@v4
+        with:
+          package-json-path: '${{ github.workspace }}/package.json'
+
+      - name: Use the package manager cache if available
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
+        env:
+          NX_AGENT_NAME: ${{ matrix.agent }}
